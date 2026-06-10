@@ -25,13 +25,9 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Generate and validate
+      - name: Validate and build
         run: |
-          python3 scripts/generate_markdown_corpus.py
-          python3 scripts/generate_session_atlas_html.py
-          cp session-atlas.html index.html
-          python3 scripts/generate_agent_router.py
-          python3 scripts/validate_public_repo.py
+          python3 scripts/validate_protocol_repo.py
           python3 scripts/build_site.py
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3

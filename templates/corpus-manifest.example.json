@@ -1,0 +1,17 @@
+{
+  "schema": "agentic-research-corpus-manifest/v1",
+  "name": "Example Research Corpus",
+  "description": "A short description of the source domain and routing goal.",
+  "entrypoints": {
+    "agent": "llms.txt",
+    "router": "agent-router.json",
+    "human": "index.html"
+  },
+  "sourcePolicy": {
+    "allowedCachedFields": ["title", "summary", "sourceUrl", "coverage", "derivedNotes"],
+    "disallowedCachedFields": ["fullTranscript", "credentials", "localPaths", "rawBrowserCache"],
+    "ephemeralOnlyFields": ["transcriptText", "sessionCookies"]
+  },
+  "coverageLabels": ["metadata-only", "deep-researched"],
+  "routes": ["agent-corpus/AGENT_INDEX.md", "agent-corpus/QUESTION_ROUTING.md"]
+}

@@ -1,11 +1,11 @@
 # Source Policy
 
-The repository stores routing data and derived research notes, not raw source dumps.
+A corpus should store routing data and derived research notes, not unbounded raw source dumps.
 
-## Allowed
+## Usually Allowed
 
-- Official source URLs
-- Metadata from official pages
+- Primary source URLs
+- Source metadata from official pages
 - Chapter titles and timestamps when available
 - Short derived summaries
 - API and concept terms
@@ -13,7 +13,7 @@ The repository stores routing data and derived research notes, not raw source du
 - Links to documentation and related resources
 - Sanitized source collection metadata
 
-## Disallowed
+## Usually Disallowed
 
 - Full transcript bodies
 - Credentials or tokens
@@ -21,17 +21,16 @@ The repository stores routing data and derived research notes, not raw source du
 - Private project names
 - Local helper ports or commands
 - Unsanitized browser/session caches
+- Raw paid, private, or license-restricted source dumps
 
-## Transcript Rule
+## Ephemeral Source Rule
 
-Transcript text may be fetched ephemerally during generation. It must be reduced into structured notes and discarded.
+Large source text may be fetched and read during generation when policy allows it. If it is not allowed as a durable artifact, it must be reduced into structured notes and discarded.
 
 ## Public Export Rule
 
-Before publishing:
+Before publishing, a corpus should run its validator. This protocol repository runs:
 
 ```bash
-python3 scripts/validate_public_repo.py
+python3 scripts/validate_protocol_repo.py
 ```
-
-The validator checks JSON, required files, private-reference patterns, and transcript-cache markers.

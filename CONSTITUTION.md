@@ -1,64 +1,50 @@
-# Repository Constitution
+# Agentic Research Router Constitution
 
-This repository exists to make research cheaper and more reliable for AI agents.
+This repository exists to make long-form research cheaper, faster, and more reliable for AI agents.
 
 ## Primary User
 
-The primary user is an AI agent operating under context, latency, and tool-call constraints. Humans should be able to inspect the output, but human browsing is not the main optimization target.
+The primary user is an AI agent operating under context, latency, and tool-call constraints. Human readers matter, but human browsing is secondary to accurate machine routing.
 
 ## Core Promise
 
-Given a focused question, the repository should route an agent to the smallest useful set of files and source links.
+A corpus built with this protocol should route an agent from a focused question to the smallest useful source-backed path.
 
 Examples:
 
-- “What was new in SwiftData at WWDC26?”
-- “Which Apple session covers AppIntentsTesting?”
-- “How should I verify agentic Siri integrations?”
-- “Where did Apple discuss local MLX agents?”
-- “What sessions are still metadata-only?”
+- "Was this feature announced?"
+- "Which primary source covers this API?"
+- "What changed between versions?"
+- "What confidence boundary applies to this claim?"
+- "Which source needs deeper review?"
 
 ## Non-Negotiables
 
 - Agent-first routing beats visual polish.
 - Source links must be preserved.
 - Coverage status must be explicit.
-- Full transcript text must not be stored.
-- Public artifacts must not contain local paths, private project names, or helper ports.
+- First-hop files must stay compact.
+- Public artifacts must not contain credentials, local paths, private project names, helper ports, or raw browser/session caches.
 - Generated files should be reproducible from normalized data.
-- Human summaries must not hide confidence boundaries.
+- Summaries must not hide confidence boundaries.
 
-## Agent Routing Principles
+## Routing Principles
 
 1. Start with the smallest entry point.
-2. Prefer structured indexes over prose.
-3. Prefer feature pages for capability questions.
-4. Prefer session pages for video-specific claims.
-5. Prefer source documentation for exact API signatures.
-6. Prefer coverage status before making strong claims.
-7. State when a session is metadata-only.
+2. Prefer structured indexes over broad prose.
+3. Prefer feature/capability pages for "what changed" questions.
+4. Prefer source pages for video, paper, document, or release-note claims.
+5. Prefer primary source links for exact API names, signatures, or policy claims.
+6. State when material is metadata-only or not deeply reviewed.
 
 ## Token Budget Principles
 
-- Root files should be compact.
-- Every page should have a stable title, summary, entries, synthesis, and observations.
-- Avoid duplicate long prose across pages.
-- Use IDs, slugs, topic labels, and coverage fields consistently.
-- Let agents retrieve narrow files instead of loading the whole corpus.
+- Root files should be compact enough to read in one pass.
+- Use IDs, slugs, topic labels, coverage fields, and source URLs consistently.
+- Avoid duplicating long prose across pages.
+- Split hot concept routes from full source lookup files when a corpus gets large.
+- Let agents retrieve narrow files instead of loading a whole corpus.
 
-## Bigger Vision
+## Scope Boundary
 
-This is a static research router. WWDC is the first corpus, not the only possible corpus.
-
-The larger version can route agents through:
-
-- conference videos
-- documentation sets
-- technical papers
-- product research
-- market maps
-- API migrations
-- framework release notes
-- safety and compliance references
-
-The output should remain static, inspectable, forkable, and easy to host.
+This repository owns the protocol. Individual corpus repositories own their source collection, domain-specific synthesis, public reader, and refresh cadence.

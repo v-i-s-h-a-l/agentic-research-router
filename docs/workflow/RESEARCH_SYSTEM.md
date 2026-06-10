@@ -1,12 +1,12 @@
 # Research System
 
-This repository turns source collections into static routing artifacts for AI agents.
+Agentic Research Router turns source collections into static routing artifacts for AI agents.
 
 ## Pipeline
 
 ```text
-official sources
-  -> normalized JSON
+primary sources
+  -> normalized source data
   -> generated corpus pages
   -> compact router indexes
   -> public reader
@@ -14,13 +14,27 @@ official sources
   -> static publication
 ```
 
-## Artifacts
+## Protocol Artifacts
 
-- `data/session-atlas.json`: normalized source of truth for the current corpus.
-- `agent-corpus/`: generated Markdown research graph.
-- `agent-router.json`: compact machine-readable routing graph.
-- `llms.txt`: compact root agent entry point.
-- `index.html`: public reader.
+This repository defines:
+
+- router schema
+- corpus manifest schema
+- source policy guidance
+- page and routing conventions
+- publication and validation patterns
+- starter templates
+
+## Corpus Artifacts
+
+A corpus repository should provide:
+
+- normalized source data
+- `agent-corpus/`: generated Markdown research graph or equivalent
+- `agent-router.json`: compact machine-readable routing graph
+- `llms.txt`: compact root agent entry point
+- `index.html`: public reader when useful
+- domain-specific validation and refresh scripts
 
 ## Why Static
 
@@ -32,8 +46,8 @@ To create another corpus:
 
 1. Define the source inventory.
 2. Define topic and feature routing dimensions.
-3. Normalize sources into JSON.
-4. Generate session/source pages.
+3. Normalize sources into JSON or another structured format.
+4. Generate source pages and routing pages.
 5. Generate compact route indexes.
 6. Validate safety and token budget.
 7. Publish the static reader and corpus.

@@ -1,55 +1,59 @@
 # Agentic Research Router
 
-Agentic Research Router is a static, AI-agent-first research corpus. Its first packaged corpus is a WWDC26 plus relevant WWDC25 Apple platform research atlas.
+Agentic Research Router is a reusable protocol for publishing static, AI-agent-first research corpora.
 
-The primary audience is not a human scrolling a website. The primary audience is an AI agent that needs to answer a focused question with the shortest reliable path to the right topic, session, documentation, and evidence.
+It is not a corpus itself. It defines the routing contract, source policy, schemas, templates, validation rules, and publication workflow that a corpus can implement.
 
-## Start Here
+Reference implementation:
 
-- `llms.txt`: compact entry point for AI agents.
-- `agent-router.json`: machine-readable routing index.
-- `agent-corpus/AGENT_INDEX.md`: corpus overview.
-- `agent-corpus/QUESTION_ROUTING.md`: how to route common question types.
-- `agent-corpus/RESEARCH_QUEUE.md`: deep-research priority map.
-- `agent-corpus/COVERAGE_STATUS.md`: what is deeply researched versus metadata-only.
-- `index.html`: public human reader for GitHub Pages.
+- `wwdc-apple-platform-atlas`: Apple platform and WWDC research corpus built with this protocol.
 
-## Design Goal
+## Primary Goal
 
-This repository should reduce the cost of research for agents.
+Given a focused question, an AI agent should reach the smallest useful set of files and source links without broad web browsing.
 
-An agent asking “what changed in SwiftData at WWDC26?” should not browse the web broadly. It should:
+The intended route is:
 
-1. Read `llms.txt`.
-2. Open `agent-router.json` or `agent-corpus/QUESTION_ROUTING.md`.
-3. Route to `agent-corpus/features/swiftdata.md` or the specific session file.
-4. Follow Apple source links only when exact API confirmation is needed.
+```text
+llms.txt -> agent-router.json -> focused corpus page -> primary source link
+```
 
-## Corpus Layout
+## What This Repo Contains
 
-- `agent-corpus/sessions/`: one Markdown record per WWDC session.
-- `agent-corpus/topics/`: Apple topic group routing pages.
-- `agent-corpus/features/`: feature-level maps such as SwiftData, SwiftUI, Foundation Models, App Intents, Xcode agents, and Evaluations.
-- `agent-corpus/docs/`: source documentation indexes.
-- `agent-corpus/comparisons/`: comparison material for non-Apple context.
-- `data/session-atlas.json`: normalized source data used to generate the corpus and reader.
+- `llms.txt`: compact entry point for agents learning this protocol.
+- `schemas/`: JSON schemas for router and corpus metadata contracts.
+- `templates/`: starter templates for new research corpora.
+- `docs/workflow/`: research, source, publication, and operations guidance.
+- `scripts/validate_protocol_repo.py`: public-safety and contract validator for this protocol repo.
+- `index.html`: small public reader for GitHub Pages.
 
-## Public Reader
+## What Belongs In A Corpus Repo
 
-`index.html` is the GitHub Pages reader. It is useful for humans, but it is secondary to the agent corpus.
+A corpus repo should contain the topic-specific artifacts:
 
-## Source Policy
+- normalized source data
+- generated `agent-corpus/` pages
+- corpus-specific `agent-router.json`
+- corpus-specific `llms.txt`
+- public reader output
+- source refresh scripts
+- validation tuned to that source domain
 
-Full Apple transcript bodies are not stored. Priority transcripts are read ephemerally by the builder and reduced into structured notes. Public artifacts store derived notes, source links, coverage labels, and routing metadata.
+## Design Principles
 
-## Reuse For Other Research
+- Optimize for AI-agent retrieval before human browsing.
+- Keep first-hop files compact.
+- Separate source metadata, derived notes, and exact primary links.
+- Label coverage depth explicitly.
+- Do not store full transcripts or raw source dumps unless the source license and repository policy explicitly allow it.
+- Make generated artifacts reproducible.
+- Validate public exports before publishing.
 
-The intended reusable pattern is:
+## Creating A New Corpus
 
-1. Collect official or primary sources.
-2. Normalize them into `data/<corpus>.json`.
-3. Generate compact routing files, feature pages, source maps, and coverage status.
-4. Validate privacy, source policy, link shape, JSON, and token budgets.
-5. Publish static artifacts through GitHub Pages.
-
-See `docs/workflow/` for the repository constitution, research protocol, daily operations, and publication checklist.
+1. Start from `templates/research-project.md`.
+2. Define source types, allowed cached fields, disallowed fields, and coverage labels.
+3. Normalize sources into structured JSON.
+4. Generate compact route indexes and Markdown pages.
+5. Validate against `schemas/` and local public-safety rules.
+6. Publish static artifacts through GitHub Pages or another static host.

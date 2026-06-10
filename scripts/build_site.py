@@ -12,17 +12,14 @@ OUT = ROOT / "_site"
 
 ALLOWLIST = [
     "index.html",
-    "session-atlas.html",
     "llms.txt",
     "llms-full.txt",
-    "agent-router.json",
     "README.md",
     "CONSTITUTION.md",
     "AGENTS.md",
-    "agent-corpus",
-    "data/session-atlas.json",
     "docs/workflow",
-    "templates/research-project.md",
+    "schemas",
+    "templates",
 ]
 
 

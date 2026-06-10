@@ -1,43 +1,41 @@
 # Daily Operations
 
-Daily automation should protect corpus quality without generating noise.
+Daily automation should protect protocol quality without generating noise.
 
-## Daily Health Check
+## Protocol Health Check
 
 Run:
 
 ```bash
-python3 scripts/validate_public_repo.py
+python3 scripts/validate_protocol_repo.py
 ```
 
 This checks:
 
-- required router files
-- JSON parseability
+- required protocol files
+- JSON parseability for schemas and examples
 - private-reference patterns
-- transcript-cache markers
-- required corpus entry points
+- absence of corpus payload in this generic repo
+- GitHub Pages allowlist inputs
 
-## Daily Source Refresh
+## Corpus Health Check Pattern
 
-For WWDC-style corpora:
+Corpus repositories should add their own validator that checks:
 
-```bash
-python3 scripts/build_session_atlas.py
-python3 scripts/generate_markdown_corpus.py
-python3 scripts/generate_session_atlas_html.py
-cp session-atlas.html index.html
-python3 scripts/generate_agent_router.py
-python3 scripts/validate_public_repo.py
-```
+- generated artifacts are in sync
+- router JSON is valid
+- source data JSON is valid
+- full transcripts or disallowed source dumps are absent
+- coverage labels and source links are present
+- private-reference patterns are absent
 
 ## Suggested Schedule
 
-- Daily: health check and source index refresh.
-- Twice weekly during active conference/release windows: promote queued sessions.
-- Weekly: regenerate public reader and router files.
-- Monthly: review architecture, token budget, stale links, and public-safety scan patterns.
+- Daily: protocol or corpus health check.
+- During active source windows: source refresh in corpus repos.
+- Weekly: token-budget and stale-link review in active corpus repos.
+- Monthly: protocol/schema review here.
 
 ## Automation Policy
 
-Automated jobs should not silently publish low-confidence synthesis. Prefer opening a branch or artifact when new source material appears.
+Automated jobs should not silently publish low-confidence synthesis. Prefer opening a branch, issue, or artifact when new source material appears.

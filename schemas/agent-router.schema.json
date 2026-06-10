@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://v-i-s-h-a-l.github.io/agentic-research-router/schemas/agent-router.schema.json",
+  "title": "Agentic Research Router",
+  "type": "object",
+  "required": ["schema", "entrypoints", "routes", "coverage"],
+  "properties": {
+    "schema": {
+      "type": "string",
+      "const": "agentic-research-router/v1"
+    },
+    "generatedFrom": {
+      "type": "string"
+    },
+    "entrypoints": {
+      "type": "object",
+      "required": ["agent", "human"],
+      "properties": {
+        "agent": { "type": "string" },
+        "human": { "type": "string" },
+        "full": { "type": "string" }
+      },
+      "additionalProperties": true
+    },
+    "coverage": {
+      "type": "object",
+      "required": ["labels"],
+      "properties": {
+        "labels": {
+          "type": "array",
+          "items": { "type": "string" },
+          "minItems": 1
+        },
+        "summary": { "type": "object" }
+      },
+      "additionalProperties": true
+    },
+    "routes": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/route" }
+    },
+    "hotConceptRoutes": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/route" }
+    },
+    "lookupFiles": {
+      "type": "object",
+      "additionalProperties": { "type": "string" }
+    }
+  },
+  "$defs": {
+    "route": {
+      "type": "object",
+      "required": ["id", "label", "path"],
+      "properties": {
+        "id": { "type": "string" },
+        "label": { "type": "string" },
+        "path": { "type": "string" },
+        "summary": { "type": "string" },
+        "keywords": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "coverage": { "type": "string" },
+        "sourceUrls": {
+          "type": "array",
+          "items": { "type": "string", "format": "uri" }
+        }
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}

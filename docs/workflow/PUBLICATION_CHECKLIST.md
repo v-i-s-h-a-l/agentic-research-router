@@ -1,27 +1,26 @@
 # Publication Checklist
 
-Use this before publishing or updating GitHub Pages.
+Use this before publishing or updating this protocol repository.
 
 ## Required Checks
 
-- `python3 scripts/validate_public_repo.py`
-- `python3 -m json.tool data/session-atlas.json >/dev/null`
-- `python3 -m json.tool agent-corpus/manifest.json >/dev/null`
-- `python3 -m json.tool agent-corpus/session-lookup.json >/dev/null`
-- `python3 -m json.tool agent-corpus/concept-routes.json >/dev/null`
-- `python3 -m json.tool agent-router.json >/dev/null`
+- `python3 scripts/validate_protocol_repo.py`
+- `python3 -m json.tool schemas/agent-router.schema.json >/dev/null`
+- `python3 -m json.tool schemas/corpus-manifest.schema.json >/dev/null`
+- `python3 -m json.tool templates/corpus-manifest.example.json >/dev/null`
 
 ## Public Files
 
 - `index.html` exists and is the public reader.
-- `llms.txt` exists and points agents to compact routes.
-- `agent-router.json` exists.
-- `agent-corpus/` exists.
+- `llms.txt` exists and points agents to compact protocol routes.
 - `CONSTITUTION.md` exists.
 - `AGENTS.md` exists.
+- `schemas/` exists.
+- `templates/` exists.
 
 ## Safety
 
+- No corpus payload in this repo.
 - No full transcripts.
 - No local paths.
 - No credentials.

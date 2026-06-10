@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://v-i-s-h-a-l.github.io/agentic-research-router/schemas/corpus-manifest.schema.json",
+  "title": "Agentic Research Corpus Manifest",
+  "type": "object",
+  "required": ["schema", "name", "entrypoints", "sourcePolicy", "coverageLabels"],
+  "properties": {
+    "schema": {
+      "type": "string",
+      "const": "agentic-research-corpus-manifest/v1"
+    },
+    "name": { "type": "string" },
+    "description": { "type": "string" },
+    "entrypoints": {
+      "type": "object",
+      "required": ["agent", "router"],
+      "properties": {
+        "agent": { "type": "string" },
+        "router": { "type": "string" },
+        "human": { "type": "string" }
+      },
+      "additionalProperties": true
+    },
+    "sourcePolicy": {
+      "type": "object",
+      "required": ["allowedCachedFields", "disallowedCachedFields"],
+      "properties": {
+        "allowedCachedFields": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "disallowedCachedFields": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "ephemeralOnlyFields": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      },
+      "additionalProperties": true
+    },
+    "coverageLabels": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1
+    },
+    "routes": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  },
+  "additionalProperties": true
+}

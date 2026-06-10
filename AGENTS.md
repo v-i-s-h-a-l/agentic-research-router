@@ -1,38 +1,31 @@
 # Agent Instructions
 
-This repository is optimized for AI-agent research routing.
+This repository defines the reusable Agentic Research Router protocol.
 
 ## First Read
 
 1. Read `llms.txt`.
-2. Read `agent-router.json` if you need machine-readable routing.
-3. Read `agent-corpus/QUESTION_ROUTING.md` if you need natural-language routing guidance.
-4. Read `agent-corpus/COVERAGE_STATUS.md` before making strong claims.
+2. Read `CONSTITUTION.md`.
+3. Read `docs/workflow/RESEARCH_SYSTEM.md`.
+4. Use `schemas/` and `templates/` when creating or reviewing a corpus implementation.
 
-## Retrieval Rules
+## Repository Boundary
 
-- Do not load the whole corpus unless the task explicitly requires global synthesis.
-- For feature questions, start in `agent-corpus/features/`.
-- For video/session questions, start in `agent-corpus/sessions/`.
-- For Apple topic questions, start in `agent-corpus/topics/`.
-- For exact SDK names or signatures, follow Apple documentation links and verify against current SDK docs.
-- If a page says `metadata-only`, say that the answer is based on metadata and needs deeper review.
+- Keep this repo generic.
+- Do not add domain-specific corpora here.
+- Put source-domain content, generated corpus pages, and public readers in separate corpus repositories.
+- Use `wwdc-apple-platform-atlas` as the first reference implementation, not as content to copy back into this repo.
 
-## Source Rules
+## Protocol Rules
 
-- Do not treat generated summaries as primary sources.
-- Use generated summaries as routing and synthesis.
-- Use Apple video/documentation links for exact claims.
-- Do not add full transcript text to the repo.
-
-## Public-Safety Rules
-
-- Do not commit local paths, private project names, credentials, tokens, helper ports, or machine-specific commands.
-- Do not publish unsanitized source caches.
-- Run `python3 scripts/validate_public_repo.py` before committing public-facing changes.
+- A corpus should provide a compact agent entry point, machine-readable router, coverage status, source links, and public-safety validation.
+- A corpus should not require runtime services for basic routing.
+- A corpus should make confidence boundaries explicit.
+- A corpus should avoid storing full transcripts or raw source dumps unless allowed and intentional.
 
 ## Editing Rules
 
-- Generated corpus files should be regenerated from source data and scripts.
-- If adding a reusable workflow, place it under `docs/workflow/`.
-- If adding a new research corpus, keep the same routing contract: compact root index, structured data, generated agent corpus, coverage map, and source policy.
+- Run `python3 scripts/validate_protocol_repo.py` before committing.
+- Keep schemas backwards-compatible unless changing the protocol version.
+- Update templates and workflow docs together when changing the contract.
+- Do not commit credentials, local paths, private project names, or machine-specific helper commands.

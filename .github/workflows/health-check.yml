@@ -18,18 +18,10 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Generate router
-        run: |
-          python3 scripts/generate_markdown_corpus.py
-          python3 scripts/generate_session_atlas_html.py
-          cp session-atlas.html index.html
-          python3 scripts/generate_agent_router.py
-      - name: Validate public repo
-        run: python3 scripts/validate_public_repo.py
-      - name: Generated files are in sync
-        run: git diff --exit-code
+      - name: Validate protocol repo
+        run: python3 scripts/validate_protocol_repo.py
       - name: Validate JSON
         run: |
-          python3 -m json.tool agent-router.json >/dev/null
-          python3 -m json.tool data/session-atlas.json >/dev/null
-          python3 -m json.tool agent-corpus/manifest.json >/dev/null
+          python3 -m json.tool schemas/agent-router.schema.json >/dev/null
+          python3 -m json.tool schemas/corpus-manifest.schema.json >/dev/null
+          python3 -m json.tool templates/corpus-manifest.example.json >/dev/null
