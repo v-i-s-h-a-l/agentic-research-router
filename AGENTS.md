@@ -6,8 +6,11 @@ This repository defines the reusable Agentic Research Router protocol.
 
 1. Read `llms.txt`.
 2. Read `CONSTITUTION.md`.
-3. Read `docs/workflow/RESEARCH_SYSTEM.md`.
-4. Use `schemas/` and `templates/` when creating or reviewing a corpus implementation.
+3. Read `ROADMAP.md`.
+4. Read `docs/VISION.md`.
+5. Read `docs/AGENT_HANDOFF.md`.
+6. Read `docs/workflow/RESEARCH_SYSTEM.md`.
+7. Use `schemas/` and `templates/` when creating or reviewing a corpus implementation.
 
 ## Repository Boundary
 

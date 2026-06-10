@@ -17,7 +17,8 @@ ALLOWLIST = [
     "README.md",
     "CONSTITUTION.md",
     "AGENTS.md",
-    "docs/workflow",
+    "ROADMAP.md",
+    "docs",
     "schemas",
     "templates",
 ]

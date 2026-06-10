@@ -21,6 +21,9 @@ llms.txt -> agent-router.json -> focused corpus page -> primary source link
 ## What This Repo Contains
 
 - `llms.txt`: compact entry point for agents learning this protocol.
+- `ROADMAP.md`: direction for the protocol repository.
+- `docs/VISION.md`: long-term product and architecture vision.
+- `docs/AGENT_HANDOFF.md`: context for a fresh agent entering the repository.
 - `schemas/`: JSON schemas for router and corpus metadata contracts.
 - `templates/`: starter templates for new research corpora.
 - `docs/workflow/`: research, source, publication, and operations guidance.
